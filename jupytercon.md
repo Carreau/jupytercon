@@ -42,25 +42,25 @@ Matthias Bussonnier – UC BIDS - @mbussonn/@carreau
 --
 
  - Rich display messages
- - Tab Completion
+ - Tab completion
 
 <!-- 
-In this part I'm going to dive into 2 subject:
-- The rich display protocol, 
+In this part I'm going to dive into two subjects:
+- The rich display protocol
 - Completion
 
 -->
 -- 
 ## The display messages
 
-Part of the Jupyter Protocol which allow the kernel to send data to:
+Part of the Jupyter Protocol which allows the kernel to send data to:
 
   - Be displayed to the user, now or later
   - Be stored in a document (e.g., notebook file)
 
 -- 
 
-### On he wire
+### On the wire
 
 It is part of the IOPub channel (Broadcasted)
 
@@ -84,9 +84,9 @@ The data field is a mapping from mime type to the actual data for this mimetype.
 
 The metadata field contain a mapping from mimetype to metadata for the
 associated mimetype. The metadata can be safely ignored, but could contain extra
-informations like preferred width/height for an image, 
+information such as preferred width/height for an image. 
 
-The transient dict is for information which do make sens while the kernel is
+The transient dict is for information which makes sense while the kernel is
 alive, but should not be persisted in a document. 
 
 Let's focus on the `data` field
@@ -105,7 +105,7 @@ Mimetype keyed dictionary, values should be interpreted by the frontend.
 
 <!--
 
-It is important to understand that this information is broadcasted, the kernel
+It is important to understand that this information is broadcasted; The kernel
 does not have any idea that the execution request comes from 
 
   - Classic notebook
@@ -115,14 +115,14 @@ does not have any idea that the execution request comes from
 
 Even if the execution comes from one of these it might not be the only one
 listening. Hence we do not make assumptions about the frontend and send all the
-mimetyes. 
+mimetypes. 
 
-This allow the frontend to decide, and in particular to store all information
-for a posteriori re rendering. 
+This allows the frontend to decide, and in particular to store all information
+for a posteriori rerendering. 
 
 So far we have not introduced any language specificity in our description. 
-Our kernel, which is a dispatching process is responsible from creating these
-mimebundle. The mechanism by which this is done may not be part of the
+Our kernel, which is a dispatching process is responsible fore creating these
+mimebundles. The mechanism by which this is done may not be part of the
 underlying language. 
 
 -->
@@ -131,7 +131,7 @@ underlying language.
 
 ## In IPython
 
-In IPython the display portion of the protocol can be implemented in 2 ways:
+In IPython the display portion of the protocol can be implemented in two ways:
   - Using `_repr_*_` methods
   - By registering `formatters`
 
@@ -153,7 +153,7 @@ class MultiMime:
         return "This <b>is</b> html"
     
     def _repr_markdown_(self):
-        return "This **is** mardown"
+        return "This **is** markdown"
 
     def _repr_latex_(self):
         return "$ Latex \otimes mimetype $"
@@ -169,7 +169,7 @@ display(MultiMime())
 -- 
 
 
-## registering formatters
+## Registering formatters
 
 -- 
 
@@ -209,15 +209,15 @@ requests.get('https://api.github.com')
 
 ### what is tab completion ?
 
-- Shortcut from one state of document to another state.
+- Shortcut from one state of the document to another state.
     - *Most* of the time : append text.
-    - Most editor : static analysis
+    - Most editors : static analysis
 
 -- 
 
 ### Jupyter Tab completion
 
-It is part of the Shell channel (Not Broadcasted). Completion only make sens
+It is part of the Shell channel (Not Broadcasted). Completion only makes sense
 for the client requesting it.
 
 ```
@@ -241,7 +241,7 @@ Reply : A list "Patches", replace from... to ... by ...
  
 -- 
 
-- Kernel Decide how to dispatch completion. 
+- Kernel decides how to dispatch completion. 
   - Static Analysis
   - Inspection of current state
 
@@ -254,7 +254,7 @@ Reply : A list "Patches", replace from... to ... by ...
 Kernels are processes managing user requests.
   - They are not limited to one language. 
   - Implementation can be in a different language (metakernel, Xeus, ... )
-  - Implementation do not make full use of protocol
+  - Implementation does not make full use of protocol
 
 &nbsp;
 - Lots of protocol details we haven't seen here.
