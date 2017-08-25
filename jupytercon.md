@@ -121,7 +121,7 @@ This allows the frontend to decide, and in particular to store all information
 for a posteriori rerendering. 
 
 So far we have not introduced any language specificity in our description. 
-Our kernel, which is a dispatching process is responsible fore creating these
+Our kernel, which is a dispatching process is responsible for creating these
 mimebundles. The mechanism by which this is done may not be part of the
 underlying language. 
 
