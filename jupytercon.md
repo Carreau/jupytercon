@@ -43,7 +43,7 @@ Matthias Bussonnier – UC BIDS - @mbussonn/@carreau
 
 --
 
- - Rich display protocol
+ - Rich display messages
  - Tab Completion
 
 <!-- 
@@ -53,7 +53,7 @@ In this part I'm going to dive into 2 subject:
 
 -->
 -- 
-## The display protocol
+## The display messages
 
 Part of the Jupyter Protocol which allow the kernel to send data to:
 
