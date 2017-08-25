@@ -17,8 +17,6 @@ Paul Ivanov – Matthias Bussonnier
 
 JupyterCon – August 25, 2017, NYC
 
-Slides available at Whatever
-
 ----
 
 <!-- .slide: class="jupyter-light" -->
